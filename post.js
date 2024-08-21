@@ -19,7 +19,7 @@ const sendPostRequest = (async () => {
         const genresDataList = await createGenresDataList()
     
         const data = {
-            "github_url": "<Link do repositório do seu projeto>",
+            "github_url": "https://github.com/brenndalandim/Projeto_Spotify",
             "name": "Brennda Landim",
             "pop_ranking": artistDataList,
             "genre_ranking": genresDataList
