@@ -1,5 +1,5 @@
 let artistList = document.querySelector('#artistas')
-let topArtistImg = document.querySelector('.topArtista img')
+let topArtistImg = document.querySelector('.tops img')
 let topArtistName = document.querySelector('.nomeTopArtista')
 let segTopArtist = document.querySelector('.segTopArtista')
 let genresList = document.querySelector('#generos')
@@ -12,7 +12,7 @@ const createArtistList = (async () => {
         let tr = document.createElement('tr')
         tr.innerHTML = `
         <td>${artist.name}</td>
-        <td>${artist.followers.total}</td>
+        <td>${(artist.followers.total).toLocaleString('pt-BR')}</td>
         <td>${artist.popularity}</td>
         `
         artistList.append(tr)
@@ -20,7 +20,7 @@ const createArtistList = (async () => {
 
     topArtistImg.src = artists[0].images[0].url
     topArtistName.innerHTML = artists[0].name
-    segTopArtist.innerHTML = `${artists[0].followers.total} seguidores`
+    segTopArtist.innerHTML = `${(artists[0].followers.total).toLocaleString('pt-BR')} seguidores`
 })()
 
 const createGenresList = (async () => {
