@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- fonte Bricolage Grotesque google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <title>Spotify Data</title>
+</head>
+<body>
+    <h1 class="pageTitle">Spotify Data</h1>
+    <div class="container">
+        <div class="topArtista lista">
+            <div>
+                <h2>Top Artista da Seleção</h2>
+                <div class="containerImgTopArtista">
+                    <img src="" alt="imagem do top artista da seleção">
+                    <div class="textoTopArtista">
+                        <p class="nomeTopArtista"></p>
+                        <p class="segTopArtista"></p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h2>Top Gênero</h2>
+                <p class="topGenero"></p>
+            </div>
+        </div>
+
+        <div class="lista listaArtistas">
+            <h2 class="tableTitle">Top Seguidores Artistas Pop</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Artista</th>
+                        <th>Seguidores</th>
+                        <th>Popularidade</th>
+                    </tr>
+                </thead>
+                <tbody id="artistas">
+
+                </tbody>
+            </table>
+        </div>
+
+        <div class="lista listaGeneros">
+            <h2 class="tableTitle">Top 5 Gêneros</h2>
+            <table class="table tableGeneros">
+                <thead>
+                    <th>Gênero</th>
+                </thead>
+                <tbody id="generos">
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="main.js"></script>
+    <script src="dom.js"></script>
+    <script src="post.js"></script>
+</body>
+</html>
