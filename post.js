@@ -1,3 +1,4 @@
+//criar lista de objetos {artista: nome, followers: x}
 const createArtistDataList = async () => {
     const popArtists = await getPopArtists()
     return popArtists.map(artist => ({
@@ -5,7 +6,8 @@ const createArtistDataList = async () => {
         followers: artist.followers.total
     }))
 }
-    
+
+//criar lista com os generos
 const createGenresDataList = async () => {
     const genres = await getTopGenres()
     return genres.map(genres => {
@@ -13,6 +15,7 @@ const createGenresDataList = async () => {
     })
 }
 
+//criação da requisição POST, porém com erro 401 de autorização negada
 const sendPostRequest = (async () => {
     try{
         const artistDataList = await createArtistDataList()
@@ -25,20 +28,22 @@ const sendPostRequest = (async () => {
             "genre_ranking": genresDataList
         }
     
-        const result = await fetch('https://psel-solution-automation-cf-ubqz773kaq-uc.a.run.app?access_token=bC2lWA5c7mt1rSPR', {
+        const request = await fetch('https://psel-solution-automation-cf-ubqz773kaq-uc.a.run.app/?access_token=bC2lWA5c7mt1rSPR', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {
+                'Content-Type': 'application/json' 
+            },
             body: JSON.stringify(data),
             mode: 'no-cors'
         })
 
-        if (!result.ok) {
-            throw new Error('Response was not ok');
+        if (!request.ok) {
+            throw new Error('Erro na requisição');
         }
     
-        const resultData = await result.json();
-        console.log('Resposta:', resultData);
+        const result = await request.json();
+        console.log('Resposta:', result);
     } catch (error) {
         console.error('Erro:', error);
-  }
+    }
 })()

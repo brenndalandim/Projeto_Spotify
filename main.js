@@ -1,5 +1,5 @@
 const clientId = 'c0d5f92aa50940c5959875652bd69390';
-const  clientSecret = '70265c7c1e1a48b59377fb40ac9a3041';
+const clientSecret = '70265c7c1e1a48b59377fb40ac9a3041';
 
 //pegar o token do spotify
 const getToken = async () => {
@@ -16,7 +16,7 @@ const getToken = async () => {
     return data.access_token;
 }
 
-//função que retorna a lista de artistas de acordo com os IDs e o token
+//retornar a lista de artistas de acordo com os IDs e o token
 const getArtists = async (token, artistId) => {
     const result = await fetch (`https://api.spotify.com/v1/artists?ids=${artistId}`, {
         method: 'GET',
@@ -29,7 +29,7 @@ const getArtists = async (token, artistId) => {
     return data.artists
 }
 
-//listagem dos artistas usando a função acima com as informações necessárias para o seu funcionamento
+//listar artistas alimentando com token e os IDs
 const listArtists = async () => {
     const token = await getToken();
     const artistsId = '6eUKZXaKkcviH0Ku9w2n3V,1dfeR4HaWDbWqFHLkxsg1d,66CXWjxzNUsdJxJ2JdwvnR,04gDigrS5kc9YWfZHwBETP,53XhwfbYqKCa1cC15pYq2q,7dGJo4pcD2V6oG8kP0tJRR,1HY2Jd0NmPuamShAr6KMms,4gzpq5DPGxSnKTe4SA8HAU,6vWDO969PvNqNYHIOW5v0m,0du5cEVh5yTK9QJze8zA0C,5pKCCKE2ajJHZ9KAiaK11H,0EmeFodog0BfCgMzAIvKQp,1uNFoZAHBGtllmzznpCI3s,6S2OmqARrzebs0tKUEyXyp,06HL4z0CvFAxyc27GXpf02';
@@ -37,7 +37,7 @@ const listArtists = async () => {
     return getArtists(token, artistsId)
 }
 
-//Definir os artistas com genero Pop
+//definir os artistas com genero Pop
 const getPopArtists = async () => {
     const artists = await listArtists()
 
@@ -48,13 +48,13 @@ const getPopArtists = async () => {
         }
     )
 
-    //ordenação da lista de cantores pop de acordo com o número de seguidores de forma decrescente
+    //ordenação da lista de cantores pop de acordo com o número de seguidores em ordem decrescente
     const sortPopArtists = popArtists.sort((a,b) => b.followers.total - a.followers.total)
 
     return sortPopArtists;
 }
 
-//definir a lista com top 5 generos dos artistas listados
+//definir a lista com top 5 gêneros dos artistas listados
 const getTopGenres = async () => {
     const artists = await listArtists()
 
@@ -66,13 +66,13 @@ const getTopGenres = async () => {
         return contador;
     }, {});
 
-    //converter o objeto contador em um array de pares [gênero, contagem]
+    //converter o objeto contador em uma lista de pares [gênero, contagem]
     const generosArray = Object.entries(contarGeneros);
 
     //ordenar os gêneros pela contagem em ordem decrescente
     generosArray.sort((a, b) => b[1] - a[1]);
 
-    // Obter os 5 gêneros mais frequentes
+    //obter os 5 gêneros mais frequentes
     const top5Generos = generosArray.slice(0, 5);
 
     return top5Generos;
