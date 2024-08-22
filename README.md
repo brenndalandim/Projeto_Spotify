@@ -3,6 +3,8 @@ Utilizando a API do Spotify, recolhe dados de artistas selecionados e retorna um
 
 Página web construída de forma básica para não tirar o foco principal de mostrar os dados finais de forma clara e objetiva.
 
+[Acesse aqui!](https://brenndalandim.github.io/Projeto_Spotify/)
+
 ## Possíveis implementações
 - Função de adicionar novos IDs à base de dados através de um ```input``` na tela com uso de react.
 - Seleção em tela do gênero desejado para listar artistas.
